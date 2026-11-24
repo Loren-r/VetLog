@@ -1,66 +1,35 @@
-# VetLog
+# React + TypeScript + Vite
 
-Análisis y diseño de una plataforma web de gestión veterinaria. Proyecto de título del Técnico en Programación y Análisis de Sistemas (AIEP).
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-## Problemática
+Currently, two official plugins are available:
 
-Muchas clínicas veterinarias pequeñas gestionan sus reservas, agendas, fichas clínicas e inventario con métodos manuales o herramientas no especializadas. Esto genera información fragmentada, registros duplicados, conflictos de agenda, poca trazabilidad y dificultades para avisar a tiempo cambios o recordatorios a los clientes.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## Solución propuesta
+## React Compiler
 
-VetLog es una plataforma web que centraliza los procesos principales de una clínica veterinaria pequeña que atiende perros y gatos:
+The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
 
-- Acceso y autorización por roles: cliente, recepcionista, veterinario y administrador.
-- Gestión de clientes y mascotas.
-- Reserva, modificación y cancelación de horas.
-- Agendas de especialistas.
-- Fichas clínicas con acceso controlado.
-- Inventario clínico básico.
-- Registro de cambios para la trazabilidad.
+Note: This will impact Vite dev & build performances.
+You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
 
-## Alcance
+## Expanding the Oxlint configuration
 
-El proyecto se trabaja en dos etapas:
+If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
 
-### 1. Análisis y diseño (proyecto de título)
-
-- Requisitos funcionales y no funcionales, reglas de negocio e historias de usuario.
-- Procesos de negocio en BPMN 2.0.
-- Casos de uso, diagramas de secuencia y diagrama de clases (UML).
-- Modelo entidad-relación y diccionario de datos.
-- Prototipo de interfaz (MVP).
-- Seguridad, privacidad, riesgos, presupuesto y carta Gantt.
-
-### 2. Desarrollo (continuación del equipo)
-
-- Implementación del frontend en React y del backend en NestJS.
-- Base de datos en PostgreSQL a partir del modelo diseñado.
-- Pruebas basadas en los casos de prueba definidos en el diseño.
-
-VetLog es un caso académico: no usa datos personales ni clínicos reales.
-
-## Arquitectura propuesta
-
-Patrón MVC (Modelo-Vista-Controlador):
-
-- **Vista:** React
-- **Controlador:** NestJS
-- **Modelo y datos:** PostgreSQL
-
-## Metodología
-
-RUP, para estructurar el análisis, los artefactos y su trazabilidad.
-
-## Estructura del repositorio
-
-```
-VetLog/
-├── docs/        ← entregables e informes
-├── diagramas/   ← BPMN, UML y modelo de datos
-└── prototipo/   ← prototipo de interfaz
+```json
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript", "oxc"],
+  "options": {
+    "typeAware": true
+  },
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/only-export-components": ["warn", { "allowConstantExport": true }]
+  }
+}
 ```
 
-## Equipo
-
-- **Lorena Ramos Fuentes:** jefa de proyecto, diseño UI/UX y frontend, QA y trazabilidad.
-- **Luis Huerta Jiménez:** análisis de requisitos, arquitectura, modelo de datos y backend.
+See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
