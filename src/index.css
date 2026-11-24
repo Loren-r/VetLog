@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: #e6ebe5;
+}
+
+.login-main {
+    display: grid;
+    height: 100vh;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 350px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+    transition: 250ms;
+    margin: 0 auto;
+}
+
+.form-container.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.login-header {
+    margin-top: 10rem;
+    margin-bottom: 0.3rem;
+    margin-left: 1rem;
+    width: 100%;
+}
+
+
+.login-header h2 {
+    font-size: 1.5rem;
+    margin-left: 2.8rem;
+    color: #000000;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+}
+
+.login label {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #475569;
+    font-weight: 600;
+}
+
+.login input {
+    margin-top: 0.5rem;
+    padding: 0.7rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.login input:focus {
+    border-color: #7489a5;
+    box-shadow: 0 0 0 3px rgba(116, 137, 165, 0.1);
+    outline: none;
+}
+
+.login a {
+    margin: 1rem 0;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: #0f4c75;
+    font-weight: 500;
+}
+
+.login a:hover {
+    text-decoration: underline;
+    color: #0a2540;
+}
+
+.bttLog {
+    padding: 0.8rem;
+    border: none;
+    background: linear-gradient(135deg, #c28006, #ffbc02);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 1rem;
+}
+
+.bttLog:hover {
+    background: linear-gradient(135deg, #3fc700, #6eac3c);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(10, 37, 64, 0.2);
+}
+
+
+@media (max-width: 768px) {
+
+    .login-main {
+        flex-direction: column;
+    }
+
+    .login-left {
+        display: none;
+        clip-path: none;
+    }
+
+    .login-right {
+        width: 100%;
+        padding: 2rem;
+    }
+
+    .form-container,.form-container.active{
+        justify-content: center;
+    }
+
+}
